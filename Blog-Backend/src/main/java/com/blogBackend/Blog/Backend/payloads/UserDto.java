@@ -1,7 +1,8 @@
 package com.blogBackend.Blog.Backend.payloads;
 
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 import lombok.Setter;
 
 @NoArgsConstructor
