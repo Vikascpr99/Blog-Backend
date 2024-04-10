@@ -2,6 +2,7 @@ package com.blogBackend.Blog.Backend.controllers;
 
 import com.blogBackend.Blog.Backend.payloads.ApiResponse;
 import com.blogBackend.Blog.Backend.payloads.PostDto;
+import com.blogBackend.Blog.Backend.payloads.PostResponse;
 import com.blogBackend.Blog.Backend.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,10 +45,13 @@ public class PostController {
 
     // Get all posts
     @GetMapping("/posts")
-    public ResponseEntity <List<PostDto>> getAllPost(){
+    public ResponseEntity<PostResponse> getAllPost(
+            @RequestParam (value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+            @RequestParam (value = "pageSize", defaultValue = "5", required = false) Integer pageSize
+    ){
 
-        List<PostDto> allPost = this.postService.getAllPost();
-        return new ResponseEntity<List<PostDto>>(allPost,HttpStatus.OK);
+        PostResponse postResponse = this.postService.getAllPost(pageNumber, pageSize);
+        return new ResponseEntity<PostResponse>(postResponse,HttpStatus.OK);
 
     }
     // Get post by Id
