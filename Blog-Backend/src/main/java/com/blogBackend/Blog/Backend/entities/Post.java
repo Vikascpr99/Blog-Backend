@@ -20,7 +20,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer post_id;
+    private Integer postId;
     @Column(name = "post_title",nullable = false)
     @NotBlank
     @Size(min = 4,max = 30,message = "title should be only 4 to 30 character")
